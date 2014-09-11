@@ -27,19 +27,22 @@ class monAssistant(QWizard):
 class IntroPage(QWizardPage):
 	def __init__(self, parent=None):
 		super(IntroPage, self).__init__(parent)
-		self.setTitle("Bienvenue sur Pyotel")
-		self.setSubTitle("Bienvenue")
+		self.setTitle("Bienvenue sur Pyotel !")
+		self.setSubTitle("Notre assitant va configurer le logiciel pour votre hotel.")
 
-		label = QLabel(self.trUtf8("Première page de notre assitant"))
+		label = QLabel(self.trUtf8("Veuillez accepter la licence :"))
 		
 		label.setWordWrap(True)
-		texte = QTextEdit()
-		texte.setReadOnly(1)
-		texte.setText(open('COPYRIGHT.txt').read())
+		texte_licence = QTextEdit()
+		texte_licence.setReadOnly(1)
+		texte_licence.setText(open('COPYRIGHT.txt').read())
+		accept_licence = QCheckBox("J'accepte")
+		self.registerField("check*", accept_licence)
 
 		layout = QVBoxLayout()
 		layout.addWidget(label)
-		layout.addWidget(texte)
+		layout.addWidget(texte_licence)
+		layout.addWidget(accept_licence)
 		self.setLayout(layout)
 
 class RegistrationPage(QWizardPage):
@@ -59,15 +62,7 @@ class RegistrationPage(QWizardPage):
 
 		
 
-		layout = QVBoxLayout()
-		layout.addWidget(label)
-		layout.addWidget(nameLabel)
-		layout.addWidget(nameEdit)
-		layout.addWidget(mailLabel)
-		layout.addWidget(mailEdit)
-		layout.addWidget(ageLabel)
-		layout.addWidget(ageEdit)
-		self.setLayout(layout)
+		
 
 class ConclusionPage(QWizardPage):
 	def __init__(self, parent=None):
