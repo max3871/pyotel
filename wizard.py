@@ -18,13 +18,7 @@ class monAssistant(QWizard):
 		self.setWizardStyle(QWizard.ModernStyle)
 
 	def accept(self):
-		name_class = self.field("name")
-		mail_class = self.field("mail")
-		age_class = self.field("age")
 		
-		print(age_class)
-		print(mail_class)
-		print(name_class)
 		
 		super(monAssistant, self).accept()
 
@@ -33,7 +27,7 @@ class monAssistant(QWizard):
 class IntroPage(QWizardPage):
 	def __init__(self, parent=None):
 		super(IntroPage, self).__init__(parent)
-		self.setTitle("Bienvenue")
+		self.setTitle("Bienvenue sur Pyotel")
 		self.setSubTitle("Bienvenue")
 
 		label = QLabel(self.trUtf8("Première page de notre assitant"))
@@ -63,21 +57,7 @@ class RegistrationPage(QWizardPage):
 
 
 
-		rx = QRegExp("""[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?""")
-		validator = QRegExpValidator(rx, self)
-		mailLabel = QLabel("&Email : ")
-		mailEdit = QLineEdit()
-		mailEdit.setValidator(validator)
-		mailLabel.setBuddy(mailEdit)
-
-		ageLabel = QLabel("Age : ")
-		ageEdit = QSpinBox()
-		ageEdit.setRange(18, 100)
-		ageEdit.setSuffix(" ans")
-
-		self.registerField("name*", nameEdit)
-		self.registerField("mail", mailEdit)
-		self.registerField("age", ageEdit)
+		
 
 		layout = QVBoxLayout()
 		layout.addWidget(label)
@@ -99,24 +79,7 @@ class ConclusionPage(QWizardPage):
 		label.setWordWrap(True)
 
 
-		self.nameLabel = QLabel()
-		self.mailLabel = QLabel()
-		self.ageLabel = QLabel()
-
-		layout = QVBoxLayout()
-		layout.addWidget(label)
-		layout.addWidget(self.nameLabel)
-		layout.addWidget(self.mailLabel)
-		layout.addWidget(self.ageLabel)
-		self.setLayout(layout)
-	def initializePage(self):
-		name_class = self.field("name")
-		mail_class = self.field("mail")
-		age_class = self.trUtf8(str(self.field("age")))
-
-		self.nameLabel.setText(name_class)
-		self.mailLabel.setText(mail_class)
-		self.ageLabel.setText(age_class)
+		
 
 if __name__=="__main__":
 	a=QApplication(sys.argv)
@@ -127,6 +90,6 @@ if __name__=="__main__":
 		a.installTranslator(translator)
 
 	f = monAssistant()
-	f.setWindowTitle("Mon premier assistant")
+	f.setWindowTitle("Assistant de congiguration de Pyotel")
 	f.show()
 	a.exec_()
