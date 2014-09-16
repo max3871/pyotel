@@ -36,7 +36,7 @@ class IntroPage(QWizardPage):
 		texte_licence = QTextEdit()
 		texte_licence.setReadOnly(1)
 		texte_licence.setText(open('COPYRIGHT.txt').read())
-		accept_licence = QCheckBox("J'accepte")
+		accept_licence = QCheckBox("J'accepte.")
 		self.registerField("check*", accept_licence)
 
 		layout = QVBoxLayout()
