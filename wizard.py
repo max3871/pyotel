@@ -12,8 +12,10 @@ class monAssistant(QWizard):
 	def __init__(self, parent=None):
 		super(monAssistant, self).__init__(parent)
 
+		self.setWindowIcon(QIcon("logo.svg"))
+
 		self.addPage(IntroPage())
-		self.addPage(RegistrationPage())
+		self.addPage(InfodebasePage())
 		self.addPage(ConclusionPage())
 		self.setWizardStyle(QWizard.ModernStyle)
 
@@ -45,24 +47,34 @@ class IntroPage(QWizardPage):
 		layout.addWidget(accept_licence)
 		self.setLayout(layout)
 
-class RegistrationPage(QWizardPage):
+class InfodebasePage(QWizardPage):
 	def __init__(self, parent=None):
-		super(RegistrationPage, self).__init__(parent)
+		super(InfodebasePage, self).__init__(parent)
 
 		self.setTitle("Enregistrement")
 
-		label = QLabel("Deuxième page de notre assitant")
+		label = QLabel("Veuillez indiquer les informations demandés")
 		label.setWordWrap(True)
 
-		nameLabel = QLabel("Nom : ")
-		nameEdit = QLineEdit()
+		name = QLineEdit()
+		adress = QLineEdit()
+		mail = QLineEdit()
+		phone = QLineEdit()
+
+		nbChb = QSpinBox()
+
+		layoutForm = QFormLayout()
+		layoutForm.addRow(self.trUtf8("Nom de l'hotel"),name)
+		layoutForm.addRow(self.trUtf8("Adresse de l'hotel"),adress)
+		layoutForm.addRow(self.trUtf8("Adresse e-mail"),mail)
+		layoutForm.addRow(self.trUtf8("Nombre de chambre"),nbChb)
+
+		layout = QVBoxLayout()
+		layout.addWidget(label)
+		layout.addLayout(layoutForm)
+		self.setLayout(layout)
 
 
-
-
-		
-
-		
 
 class ConclusionPage(QWizardPage):
 	def __init__(self, parent=None):
@@ -85,6 +97,6 @@ if __name__=="__main__":
 		a.installTranslator(translator)
 
 	f = monAssistant()
-	f.setWindowTitle("Assistant de congiguration de Pyotel")
+	f.setWindowTitle("Assistant de configuration de Pyotel")
 	f.show()
 	a.exec_()
