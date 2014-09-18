@@ -57,13 +57,15 @@ class InfodebasePage(QWizardPage):
 		label.setWordWrap(True)
 
 		name = QLineEdit()
+
 		adress = QLineEdit()
 		mail = QLineEdit()
 		phone = QLineEdit()
 
 		nbChb = QSpinBox()
 
-		
+		self.registerField("name*", name)
+		self.registerField("adress*", adress)
 
 		layoutForm = QFormLayout()
 		layoutForm.addRow(self.trUtf8("Nom de l'hotel"),name)
