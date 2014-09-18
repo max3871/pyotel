@@ -63,6 +63,8 @@ class InfodebasePage(QWizardPage):
 
 		nbChb = QSpinBox()
 
+		
+
 		layoutForm = QFormLayout()
 		layoutForm.addRow(self.trUtf8("Nom de l'hotel"),name)
 		layoutForm.addRow(self.trUtf8("Adresse de l'hotel"),adress)
@@ -73,6 +75,8 @@ class InfodebasePage(QWizardPage):
 		layout.addWidget(label)
 		layout.addLayout(layoutForm)
 		self.setLayout(layout)
+
+		
 
 
 
