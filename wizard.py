@@ -57,6 +57,14 @@ class RegistrationPage(QWizardPage):
 		nameLabel = QLabel("Nom : ")
 		nameEdit = QLineEdit()
 
+<<<<<<< Updated upstream
+=======
+		self.registerField("nameEdit*", name)
+		self.registerField("adressEdit*", adress)
+		self.registerField("mailEdit*", mail)
+		self.registerField("phoneEdit*", phone)
+		self.registerField("nbChbEdit*", nbChb)
+>>>>>>> Stashed changes
 
 
 
